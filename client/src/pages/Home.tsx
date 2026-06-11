@@ -79,6 +79,14 @@ function TechItem({ name, desc }: { name: string; desc: string }) {
 }
 
 export default function Home() {
+  const handleStartFree = () => {
+    window.location.href = '/signup';
+  };
+
+  const handleViewGitHub = () => {
+    window.open('https://github.com/rintuchowdory/openclow', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation Header */}
@@ -136,13 +144,18 @@ export default function Home() {
                 assistance.
               </p>
               <div className="flex gap-4 pt-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90"
+                  onClick={handleStartFree}
+                >
                   Start Free <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-border hover:bg-muted"
+                  onClick={handleViewGitHub}
                 >
                   View on GitHub
                 </Button>
@@ -300,13 +313,18 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90"
+                onClick={handleStartFree}
+              >
                 Start Now <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-border hover:bg-muted"
+                onClick={handleViewGitHub}
               >
                 <Github className="w-4 h-4 mr-2" />
                 View Repository
