@@ -19,16 +19,15 @@ function Router() {
 }
 
 // NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+// - Design System: Minimalist Tech Elegance
+// - Theme: Light mode with deep charcoal background (#0a0e27) and electric blue accents (#0066ff)
+// - Color palette configured in index.css with IBM Plex Sans typography
 
 function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
-        // switchable
       >
         <TooltipProvider>
           <Toaster />
