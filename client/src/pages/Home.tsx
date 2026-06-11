@@ -87,6 +87,21 @@ export default function Home() {
     window.open('https://github.com/rintuchowdory/openclow', '_blank');
   };
 
+  const handleFeatures = () => {
+    const element = document.getElementById('features');
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleTechStack = () => {
+    const element = document.getElementById('tech');
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleGetStarted = () => {
+    const element = document.getElementById('cta');
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation Header */}
@@ -99,24 +114,24 @@ export default function Home() {
             <span className="font-bold text-lg">OpenClowAI</span>
           </div>
           <nav className="hidden md:flex gap-8">
-            <a
-              href="#features"
-              className="text-sm hover:text-primary transition-colors"
+            <button
+              onClick={handleFeatures}
+              className="text-sm hover:text-primary transition-colors cursor-pointer bg-none border-none p-0"
             >
               Features
-            </a>
-            <a
-              href="#tech"
-              className="text-sm hover:text-primary transition-colors"
+            </button>
+            <button
+              onClick={handleTechStack}
+              className="text-sm hover:text-primary transition-colors cursor-pointer bg-none border-none p-0"
             >
               Tech Stack
-            </a>
-            <a
-              href="#cta"
-              className="text-sm hover:text-primary transition-colors"
+            </button>
+            <button
+              onClick={handleGetStarted}
+              className="text-sm hover:text-primary transition-colors cursor-pointer bg-none border-none p-0"
             >
               Get Started
-            </a>
+            </button>
           </nav>
         </div>
       </header>
@@ -355,17 +370,17 @@ export default function Home() {
               <h4 className="font-semibold">Product</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <button onClick={handleFeatures} className="hover:text-foreground transition-colors cursor-pointer bg-none border-none p-0 text-left">
                     Features
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Pricing page coming soon!'); }}>
                     Pricing
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Documentation coming soon!'); }}>
                     Docs
                   </a>
                 </li>
@@ -375,17 +390,17 @@ export default function Home() {
               <h4 className="font-semibold">Company</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('About page coming soon!'); }}>
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Blog coming soon!'); }}>
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Contact page coming soon!'); }}>
                     Contact
                   </a>
                 </li>
@@ -395,17 +410,17 @@ export default function Home() {
               <h4 className="font-semibold">Legal</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Privacy Policy coming soon!'); }}>
                     Privacy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Terms of Service coming soon!'); }}>
                     Terms
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('License coming soon!'); }}>
                     License
                   </a>
                 </li>
@@ -415,13 +430,13 @@ export default function Home() {
           <div className="border-t border-border/30 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>© 2026 OpenClowAI. Built with ❤️ using Next.js, React, and Manus.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-foreground transition-colors">
+              <a href="https://github.com/rintuchowdory/openclow" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                 GitHub
               </a>
-              <a href="#" className="hover:text-foreground transition-colors">
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Twitter coming soon!'); }}>
                 Twitter
               </a>
-              <a href="#" className="hover:text-foreground transition-colors">
+              <a href="#" className="hover:text-foreground transition-colors" onClick={(e) => { e.preventDefault(); alert('Discord coming soon!'); }}>
                 Discord
               </a>
             </div>
