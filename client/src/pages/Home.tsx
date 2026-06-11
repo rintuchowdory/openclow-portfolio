@@ -4,11 +4,79 @@
  * - Deep charcoal background (#0a0e27) with electric blue accents (#0066ff)
  * - IBM Plex Sans for typography, IBM Plex Mono for code
  * - Asymmetric layout with generous whitespace
- * - Subtle animations and geometric precision
+ * - Scroll-triggered fade-in animations with electric blue glow effects
  */
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Zap, Shield, Sparkles, Github } from "lucide-react";
+import { useScrollTrigger } from "@/hooks/useScrollTrigger";
+
+/**
+ * Feature Card Component with scroll-triggered animation and glow effect
+ */
+function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  delay,
+}: {
+  icon: any;
+  title: string;
+  description: string;
+  delay: number;
+}) {
+  const ref = useScrollTrigger();
+  return (
+    <div
+      ref={ref}
+      className={`fade-in-on-scroll fade-in-delay-${delay} group p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all hover:bg-card/50 glow-on-hover`}
+    >
+      <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+        <Icon className="w-6 h-6 text-primary" />
+      </div>
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </div>
+  );
+}
+
+/**
+ * Provider Card Component with scroll-triggered animation and glow effect
+ */
+function ProviderCard({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  const ref = useScrollTrigger();
+  return (
+    <div
+      ref={ref}
+      className="fade-in-on-scroll p-6 rounded-lg border border-border/50 bg-card/50 glow-on-hover"
+    >
+      <h3 className="font-bold mb-2">{title}</h3>
+      <p className="text-sm text-muted-foreground">{description}</p>
+    </div>
+  );
+}
+
+/**
+ * Tech Stack Item Component with scroll-triggered animation
+ */
+function TechItem({ name, desc }: { name: string; desc: string }) {
+  const ref = useScrollTrigger();
+  return (
+    <div ref={ref} className="fade-in-on-scroll flex items-start gap-3">
+      <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+      <div>
+        <p className="font-semibold">{name}</p>
+        <p className="text-sm text-muted-foreground">{desc}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -23,9 +91,24 @@ export default function Home() {
             <span className="font-bold text-lg">OpenClowAI</span>
           </div>
           <nav className="hidden md:flex gap-8">
-            <a href="#features" className="text-sm hover:text-primary transition-colors">Features</a>
-            <a href="#tech" className="text-sm hover:text-primary transition-colors">Tech Stack</a>
-            <a href="#cta" className="text-sm hover:text-primary transition-colors">Get Started</a>
+            <a
+              href="#features"
+              className="text-sm hover:text-primary transition-colors"
+            >
+              Features
+            </a>
+            <a
+              href="#tech"
+              className="text-sm hover:text-primary transition-colors"
+            >
+              Tech Stack
+            </a>
+            <a
+              href="#cta"
+              className="text-sm hover:text-primary transition-colors"
+            >
+              Get Started
+            </a>
           </nav>
         </div>
       </header>
@@ -37,7 +120,9 @@ export default function Home() {
             {/* Left: Text Content */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <p className="text-primary text-sm font-semibold tracking-wide uppercase">AI Assistant Platform</p>
+                <p className="text-primary text-sm font-semibold tracking-wide uppercase">
+                  AI Assistant Platform
+                </p>
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                   Intelligence
                   <br />
@@ -45,13 +130,20 @@ export default function Home() {
                 </h1>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
-                Openclow ULTRA is a beautiful, modern AI chat application powered by HuggingFace's free inference API, with Gemini and OpenAI fallback support. Experience the future of AI assistance.
+                Openclow ULTRA is a beautiful, modern AI chat application
+                powered by HuggingFace's free inference API, with Gemini and
+                OpenAI fallback support. Experience the future of AI
+                assistance.
               </p>
               <div className="flex gap-4 pt-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
                   Start Free <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-border hover:bg-muted">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-border hover:bg-muted"
+                >
                   View on GitHub
                 </Button>
               </div>
@@ -79,46 +171,37 @@ export default function Home() {
           <div className="space-y-12">
             <div className="space-y-3 max-w-2xl">
               <h2 className="text-4xl md:text-5xl font-bold">Powerful Features</h2>
-              <p className="text-lg text-muted-foreground">Everything you need to leverage AI for productivity</p>
+              <p className="text-lg text-muted-foreground">
+                Everything you need to leverage AI for productivity
+              </p>
             </div>
 
             {/* Features Grid */}
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Feature 1 */}
-              <div className="group p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all hover:bg-card/50">
-                <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Sparkles className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Multi-Provider AI</h3>
-                <p className="text-muted-foreground">Switch between HuggingFace, Gemini, and OpenAI. Choose the model that works best for you.</p>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="group p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all hover:bg-card/50">
-                <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Code2 className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Task Management</h3>
-                <p className="text-muted-foreground">Organize your work with priorities, categories, and due dates. Stay on top of your goals.</p>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="group p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all hover:bg-card/50">
-                <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Real-time Status</h3>
-                <p className="text-muted-foreground">See AI availability at a glance. Know instantly if your provider is ready to assist.</p>
-              </div>
-
-              {/* Feature 4 */}
-              <div className="group p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all hover:bg-card/50">
-                <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Secure & Private</h3>
-                <p className="text-muted-foreground">Your data is protected. API keys are stored securely per session with Manus OAuth.</p>
-              </div>
+              <FeatureCard
+                icon={Sparkles}
+                title="Multi-Provider AI"
+                description="Switch between HuggingFace, Gemini, and OpenAI. Choose the model that works best for you."
+                delay={1}
+              />
+              <FeatureCard
+                icon={Code2}
+                title="Task Management"
+                description="Organize your work with priorities, categories, and due dates. Stay on top of your goals."
+                delay={2}
+              />
+              <FeatureCard
+                icon={Zap}
+                title="Real-time Status"
+                description="See AI availability at a glance. Know instantly if your provider is ready to assist."
+                delay={3}
+              />
+              <FeatureCard
+                icon={Shield}
+                title="Secure & Private"
+                description="Your data is protected. API keys are stored securely per session with Manus OAuth."
+                delay={4}
+              />
             </div>
           </div>
         </div>
@@ -141,27 +224,22 @@ export default function Home() {
             {/* Tech Stack Content */}
             <div className="space-y-8 order-1 md:order-2">
               <div className="space-y-3">
-                <h2 className="text-4xl md:text-5xl font-bold">Built with Modern Tech</h2>
-                <p className="text-lg text-muted-foreground">A robust, scalable, and type-safe foundation for modern web applications</p>
+                <h2 className="text-4xl md:text-5xl font-bold">
+                  Built with Modern Tech
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  A robust, scalable, and type-safe foundation for modern web
+                  applications
+                </p>
               </div>
 
               <div className="space-y-4">
-                {[
-                  { name: "Next.js 16", desc: "React framework for production" },
-                  { name: "React 19", desc: "Modern UI library" },
-                  { name: "TypeScript", desc: "Type safety at scale" },
-                  { name: "Tailwind CSS", desc: "Utility-first styling" },
-                  { name: "tRPC", desc: "Type-safe APIs" },
-                  { name: "Drizzle ORM", desc: "Database layer" },
-                ].map((tech) => (
-                  <div key={tech.name} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold">{tech.name}</p>
-                      <p className="text-sm text-muted-foreground">{tech.desc}</p>
-                    </div>
-                  </div>
-                ))}
+                <TechItem name="Next.js 16" desc="React framework for production" />
+                <TechItem name="React 19" desc="Modern UI library" />
+                <TechItem name="TypeScript" desc="Type safety at scale" />
+                <TechItem name="Tailwind CSS" desc="Utility-first styling" />
+                <TechItem name="tRPC" desc="Type-safe APIs" />
+                <TechItem name="Drizzle ORM" desc="Database layer" />
               </div>
             </div>
           </div>
@@ -173,8 +251,12 @@ export default function Home() {
         <div className="container">
           <div className="space-y-12">
             <div className="space-y-3 max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-bold">Multiple AI Providers</h2>
-              <p className="text-lg text-muted-foreground">Choose from leading AI models with intelligent fallback support</p>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Multiple AI Providers
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Choose from leading AI models with intelligent fallback support
+              </p>
             </div>
 
             <div className="relative h-96 flex items-center justify-center">
@@ -187,18 +269,18 @@ export default function Home() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-lg border border-border/50 bg-card/50">
-                <h3 className="font-bold mb-2">HuggingFace (Free)</h3>
-                <p className="text-sm text-muted-foreground">Unlimited API calls to Zephyr-7B with no credit card required</p>
-              </div>
-              <div className="p-6 rounded-lg border border-border/50 bg-card/50">
-                <h3 className="font-bold mb-2">Gemini (Free with Limits)</h3>
-                <p className="text-sm text-muted-foreground">Automatic fallback if HuggingFace is unavailable</p>
-              </div>
-              <div className="p-6 rounded-lg border border-border/50 bg-card/50">
-                <h3 className="font-bold mb-2">OpenAI (Paid)</h3>
-                <p className="text-sm text-muted-foreground">Premium option for advanced use cases</p>
-              </div>
+              <ProviderCard
+                title="HuggingFace (Free)"
+                description="Unlimited API calls to Zephyr-7B with no credit card required"
+              />
+              <ProviderCard
+                title="Gemini (Free with Limits)"
+                description="Automatic fallback if HuggingFace is unavailable"
+              />
+              <ProviderCard
+                title="OpenAI (Paid)"
+                description="Premium option for advanced use cases"
+              />
             </div>
           </div>
         </div>
@@ -209,14 +291,23 @@ export default function Home() {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold">Ready to boost your productivity?</h2>
-              <p className="text-lg text-muted-foreground">Join thousands of users leveraging AI to accomplish more. Start for free today.</p>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Ready to boost your productivity?
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Join thousands of users leveraging AI to accomplish more. Start
+                for free today.
+              </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
                 Start Now <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-              <Button size="lg" variant="outline" className="border-border hover:bg-muted">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-border hover:bg-muted"
+              >
                 <Github className="w-4 h-4 mr-2" />
                 View Repository
               </Button>
@@ -232,43 +323,89 @@ export default function Home() {
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-xs">OC</span>
+                  <span className="text-primary-foreground font-bold text-xs">
+                    OC
+                  </span>
                 </div>
                 <span className="font-bold">OpenClowAI</span>
               </div>
-              <p className="text-sm text-muted-foreground">Professional AI assistant platform</p>
+              <p className="text-sm text-muted-foreground">
+                Professional AI assistant platform
+              </p>
             </div>
             <div className="space-y-3">
               <h4 className="font-semibold">Product</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Docs</a></li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Docs
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="space-y-3">
               <h4 className="font-semibold">Company</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Contact</a></li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Contact
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="space-y-3">
               <h4 className="font-semibold">Legal</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">License</a></li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Privacy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Terms
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    License
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div className="border-t border-border/30 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>© 2026 OpenClowAI. Built with ❤️ using Next.js, React, and Manus.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-foreground transition-colors">GitHub</a>
-              <a href="#" className="hover:text-foreground transition-colors">Twitter</a>
-              <a href="#" className="hover:text-foreground transition-colors">Discord</a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                GitHub
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Twitter
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Discord
+              </a>
             </div>
           </div>
         </div>
