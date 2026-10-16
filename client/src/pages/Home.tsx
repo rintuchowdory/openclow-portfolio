@@ -262,7 +262,7 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <TechItem name="Next.js 16" desc="React framework for production" />
+                <TechItem name="Vite 7" desc="Fast frontend build tooling" />
                 <TechItem name="React 19" desc="Modern UI library" />
                 <TechItem name="TypeScript" desc="Type safety at scale" />
                 <TechItem name="Tailwind CSS" desc="Utility-first styling" />
@@ -428,7 +428,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-border/30 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>© 2026 OpenClowAI. Built with ❤️ using Next.js, React, and Manus.</p>
+            <p>© 2026 OpenClowAI. Built with React, Vite, and Manus.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
               <a href="https://github.com/rintuchowdory/openclow" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                 GitHub

@@ -86,10 +86,10 @@ export default function SignUp() {
               <div className="space-y-4 p-6 rounded-lg border border-primary/30 bg-primary/5">
                 <div className="text-center space-y-2">
                   <p className="text-lg font-semibold text-primary">
-                    ✓ Sign up successful!
+                    ✓ Demo complete
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Check your email to verify your account and get started.
+                    No account was created and no email was sent.
                   </p>
                 </div>
                 <Button
@@ -157,6 +157,9 @@ export default function SignUp() {
                   <a href="#" className="text-primary hover:underline">
                     Sign in
                   </a>
+                </p>
+                <p className="text-center text-xs text-muted-foreground/80">
+                  Demo only — account creation is not connected to a backend yet.
                 </p>
               </form>
             )}
