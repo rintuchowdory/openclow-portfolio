@@ -203,7 +203,14 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const isGitHubPagesBuild = process.env.GITHUB_PAGES === "true";
+const plugins = [
+  react(),
+  tailwindcss(),
+  ...(isGitHubPagesBuild
+    ? []
+    : [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()]),
+];
 
 export default defineConfig({
   base: process.env.GITHUB_PAGES === "true" ? "/openclow-portfolio/" : "/",

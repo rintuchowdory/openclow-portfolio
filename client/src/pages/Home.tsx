@@ -9,7 +9,10 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Zap, Shield, Sparkles, Github } from "lucide-react";
+import { lazy, Suspense } from "react";
 import { useScrollTrigger } from "@/hooks/useScrollTrigger";
+
+const ParticleField = lazy(() => import("@/components/ParticleField"));
 
 /**
  * Feature Card Component with scroll-triggered animation and glow effect
@@ -138,7 +141,10 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="container">
+        <Suspense fallback={null}>
+          <ParticleField />
+        </Suspense>
+        <div className="container relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left: Text Content */}
             <div className="space-y-6">
@@ -187,6 +193,8 @@ export default function Home() {
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/hero-ai-interface-jkB7v9E3KGxAjU2KKZxvGg.webp"
                   alt="OpenClowAI Interface"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-auto"
                 />
               </div>
@@ -250,6 +258,8 @@ export default function Home() {
               <img
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/tech-stack-visual-7umteVNXbNSvtB2fSUYDmG.webp"
                 alt="Tech Stack"
+                loading="lazy"
+                decoding="async"
                 className="relative z-10 rounded-lg shadow-2xl w-full h-auto"
               />
             </div>
@@ -297,6 +307,8 @@ export default function Home() {
               <img
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/feature-ai-models-QUmEQGPnDXSEghBakjyqHs.webp"
                 alt="AI Providers"
+                loading="lazy"
+                decoding="async"
                 className="relative z-10 rounded-lg shadow-2xl w-full h-auto max-w-2xl"
               />
             </div>
