@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 
 function Router() {
   return (
+    <WouterRouter base={import.meta.env.BASE_URL}>
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/signup"} component={SignUp} />
@@ -17,6 +18,7 @@ function Router() {
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
+    </WouterRouter>
   );
 }
 

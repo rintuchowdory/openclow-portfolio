@@ -53,7 +53,7 @@ export default function SignUp() {
       <header className="sticky top-0 z-50 border-b border-border/30 bg-background/80 backdrop-blur-sm">
         <div className="container flex items-center justify-between py-4">
           <button
-            onClick={() => (window.location.href = "/")}
+            onClick={() => (window.location.href = import.meta.env.BASE_URL)}
             className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -93,7 +93,7 @@ export default function SignUp() {
                   </p>
                 </div>
                 <Button
-                  onClick={() => (window.location.href = "/")}
+                  onClick={() => (window.location.href = import.meta.env.BASE_URL)}
                   className="w-full bg-primary hover:bg-primary/90"
                 >
                   Return to Home

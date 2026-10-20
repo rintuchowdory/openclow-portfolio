@@ -80,7 +80,7 @@ function TechItem({ name, desc }: { name: string; desc: string }) {
 
 export default function Home() {
   const handleStartFree = () => {
-    window.location.href = '/signup';
+    window.location.href = `${import.meta.env.BASE_URL}signup`;
   };
 
   const handleViewGitHub = () => {
