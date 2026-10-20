@@ -45,6 +45,8 @@ jobs:
           mkdir -p site
           cp -R dist/public/. site/
           cp site/index.html site/404.html
+          mkdir -p site/signup
+          cp site/index.html site/signup/index.html
           touch site/.nojekyll
 
       - name: Upload Pages artifact
