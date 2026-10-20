@@ -29,7 +29,7 @@ function FeatureCard({
   return (
     <div
       ref={ref}
-      className={`fade-in-on-scroll fade-in-delay-${delay} group p-6 rounded-lg border border-border/50 hover:border-primary/30 transition-all hover:bg-card/50 glow-on-hover`}
+      className={`fade-in-on-scroll fade-in-delay-${delay} digital-feature-card group p-6 rounded-lg border border-border/70 hover:border-primary/40 transition-all glow-on-hover`}
     >
       <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
         <Icon className="w-6 h-6 text-primary" />
@@ -54,7 +54,7 @@ function ProviderCard({
   return (
     <div
       ref={ref}
-      className="fade-in-on-scroll p-6 rounded-lg border border-border/50 bg-card/50 glow-on-hover"
+      className="fade-in-on-scroll digital-feature-card p-6 rounded-lg border border-border/70 glow-on-hover"
     >
       <h3 className="font-bold mb-2">{title}</h3>
       <p className="text-sm text-muted-foreground">{description}</p>
@@ -103,12 +103,12 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="digital-shell min-h-screen bg-background text-foreground">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 border-b border-border/30 bg-background/80 backdrop-blur-sm">
+      <header className="digital-header sticky top-0 z-50 border-b border-border/30 backdrop-blur-sm">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
+            <div className="digital-mark w-8 h-8 bg-primary rounded flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">OC</span>
             </div>
             <span className="font-bold text-lg">OpenClowAI</span>
@@ -143,10 +143,10 @@ export default function Home() {
             {/* Left: Text Content */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <p className="text-primary text-sm font-semibold tracking-wide uppercase">
-                  AI Assistant Platform
+                <p className="digital-eyebrow">
+                  <span className="digital-dot" aria-hidden="true" /> OpenClowAI / AI WORKSPACE
                 </p>
-                <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                <h1 className="digital-title-glow text-5xl md:text-6xl font-bold leading-tight">
                   Intelligence
                   <br />
                   <span className="text-primary">Redefined.</span>
@@ -175,16 +175,21 @@ export default function Home() {
                   View on GitHub
                 </Button>
               </div>
+              <p className="font-mono text-xs tracking-[0.18em] text-muted-foreground">
+                MULTI-MODEL INTELLIGENCE <span className="text-primary">/</span> ONE WORKSPACE
+              </p>
             </div>
 
             {/* Right: Hero Image */}
             <div className="relative h-96 md:h-full flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-lg blur-3xl" />
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/hero-ai-interface-jkB7v9E3KGxAjU2KKZxvGg.webp"
-                alt="OpenClowAI Interface"
-                className="relative z-10 rounded-lg shadow-2xl w-full h-auto"
-              />
+              <div className="digital-visual-frame relative z-10 w-full">
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/hero-ai-interface-jkB7v9E3KGxAjU2KKZxvGg.webp"
+                  alt="OpenClowAI Interface"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -317,7 +322,7 @@ export default function Home() {
       {/* CTA Section */}
       <section id="cta" className="py-20 md:py-32 border-t border-border/30">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
+          <div className="digital-cta max-w-3xl mx-auto rounded-2xl p-8 md:p-12 text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-bold">
                 Ready to boost your productivity?
