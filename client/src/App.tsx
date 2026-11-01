@@ -35,7 +35,9 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <main id="main-content">
+            <Router />
+          </main>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

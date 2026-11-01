@@ -47,6 +47,29 @@ jobs:
           cp site/index.html site/404.html
           mkdir -p site/signup
           cp site/index.html site/signup/index.html
+          python3 - <<'PY'
+          from pathlib import Path
+
+          signup = Path("site/signup/index.html")
+          html = signup.read_text()
+          replacements = {
+              "<title>OpenClowAI Professional Portfolio</title>": "<title>Join OpenClowAI — Start Your AI Workspace</title>",
+              '<meta name="description" content="OpenClowAI is a modern AI workspace with multi-provider intelligence, task management, and secure session-based assistance." />': '<meta name="description" content="Create a demo OpenClowAI workspace and explore a focused AI assistant experience." />',
+              '<meta name="robots" content="index,follow" />': '<meta name="robots" content="noindex,follow" />',
+              '<link rel="canonical" href="https://rintuchowdory.github.io/openclow-portfolio/" />': '<link rel="canonical" href="https://rintuchowdory.github.io/openclow-portfolio/signup/" />',
+              '<meta property="og:url" content="https://rintuchowdory.github.io/openclow-portfolio/" />': '<meta property="og:url" content="https://rintuchowdory.github.io/openclow-portfolio/signup/" />',
+              '<meta property="og:title" content="OpenClowAI — Intelligence Redefined" />': '<meta property="og:title" content="Join OpenClowAI — Start Your AI Workspace" />',
+              '<meta property="og:description" content="A modern AI workspace with multi-provider intelligence and one focused workspace." />': '<meta property="og:description" content="Create a demo OpenClowAI workspace and explore a focused AI assistant experience." />',
+              '<meta name="twitter:title" content="OpenClowAI — Intelligence Redefined" />': '<meta name="twitter:title" content="Join OpenClowAI — Start Your AI Workspace" />',
+              '<meta name="twitter:description" content="A modern AI workspace with multi-provider intelligence and one focused workspace." />': '<meta name="twitter:description" content="Create a demo OpenClowAI workspace and explore a focused AI assistant experience." />',
+          }
+          for old, new in replacements.items():
+              html = html.replace(old, new)
+          import re
+          signup_schema = '''<script id="page-structured-data" type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Join OpenClowAI","url":"https://rintuchowdory.github.io/openclow-portfolio/signup/","description":"Create a demo OpenClowAI workspace and explore a focused AI assistant experience.","isPartOf":{"@id":"https://rintuchowdory.github.io/openclow-portfolio/#website"}}</script>'''
+          html = re.sub(r'<script id="page-structured-data" type="application/ld\+json">.*?</script>', signup_schema, html, flags=re.DOTALL)
+          signup.write_text(html)
+          PY
           touch site/.nojekyll
 
       - name: Upload Pages artifact

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rintuchowdory.github.io/openclow-portfolio/sitemap.xml

@@ -11,8 +11,26 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Zap, Shield, Sparkles, Github } from "lucide-react";
 import { lazy, Suspense } from "react";
 import { useScrollTrigger } from "@/hooks/useScrollTrigger";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
 
 const ParticleField = lazy(() => import("@/components/ParticleField"));
+
+const HOME_METADATA = {
+  title: "OpenClowAI — Intelligence Redefined",
+  description: "A modern AI workspace with multi-provider intelligence, task management, and secure session-based assistance.",
+  canonical: "https://rintuchowdory.github.io/openclow-portfolio/",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "OpenClowAI",
+    url: "https://rintuchowdory.github.io/openclow-portfolio/",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description: "An AI workspace with multi-provider intelligence, task management, and secure session-based assistance.",
+    image: "https://rintuchowdory.github.io/openclow-portfolio/openclow-og.png",
+    sameAs: ["https://github.com/rintuchowdory/openclow"],
+  },
+} as const;
 
 /**
  * Feature Card Component with scroll-triggered animation and glow effect
@@ -82,6 +100,8 @@ function TechItem({ name, desc }: { name: string; desc: string }) {
 }
 
 export default function Home() {
+  usePageMetadata(HOME_METADATA);
+
   const handleStartFree = () => {
     window.location.href = `${import.meta.env.BASE_URL}signup`;
   };

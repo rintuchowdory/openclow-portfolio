@@ -7,8 +7,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { usePageMetadata } from "@/hooks/usePageMetadata";
+
+const SIGNUP_METADATA = {
+  title: "Join OpenClowAI — Start Your AI Workspace",
+  description: "Create a demo OpenClowAI workspace and explore a focused AI assistant experience.",
+  canonical: "https://rintuchowdory.github.io/openclow-portfolio/signup/",
+  type: "WebPage" as const,
+  robots: "noindex,follow",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Join OpenClowAI",
+    url: "https://rintuchowdory.github.io/openclow-portfolio/signup/",
+    description: "Create a demo OpenClowAI workspace and explore a focused AI assistant experience.",
+    isPartOf: { "@id": "https://rintuchowdory.github.io/openclow-portfolio/#website" },
+  },
+} as const;
 
 export default function SignUp() {
+  usePageMetadata(SIGNUP_METADATA);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -102,14 +121,15 @@ export default function SignUp() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 {error && (
-                  <div className="p-4 rounded-lg border border-destructive/50 bg-destructive/10 text-destructive text-sm">
+                  <div role="alert" className="p-4 rounded-lg border border-destructive/50 bg-destructive/10 text-destructive text-sm">
                     {error}
                   </div>
                 )}
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Email Address</label>
+                  <label htmlFor="signup-email" className="text-sm font-medium">Email Address</label>
                   <Input
+                    id="signup-email"
                     type="email"
                     placeholder="you@example.com"
                     value={email}
@@ -119,8 +139,9 @@ export default function SignUp() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Password</label>
+                  <label htmlFor="signup-password" className="text-sm font-medium">Password</label>
                   <Input
+                    id="signup-password"
                     type="password"
                     placeholder="••••••••"
                     value={password}
@@ -133,8 +154,9 @@ export default function SignUp() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Confirm Password</label>
+                  <label htmlFor="signup-confirm-password" className="text-sm font-medium">Confirm Password</label>
                   <Input
+                    id="signup-confirm-password"
                     type="password"
                     placeholder="••••••••"
                     value={confirmPassword}
