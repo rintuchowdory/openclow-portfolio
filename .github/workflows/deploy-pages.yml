@@ -47,28 +47,70 @@ jobs:
           cp site/index.html site/404.html
           mkdir -p site/signup
           cp site/index.html site/signup/index.html
+          mkdir -p site/privacy site/terms site/contact
+          cp site/index.html site/privacy/index.html
+          cp site/index.html site/terms/index.html
+          cp site/index.html site/contact/index.html
           python3 - <<'PY'
           from pathlib import Path
-
-          signup = Path("site/signup/index.html")
-          html = signup.read_text()
-          replacements = {
-              "<title>OpenClowAI Professional Portfolio</title>": "<title>Join OpenClowAI — Start Your AI Workspace</title>",
-              '<meta name="description" content="OpenClowAI is a modern AI workspace with multi-provider intelligence, task management, and secure session-based assistance." />': '<meta name="description" content="Create a demo OpenClowAI workspace and explore a focused AI assistant experience." />',
-              '<meta name="robots" content="index,follow" />': '<meta name="robots" content="noindex,follow" />',
-              '<link rel="canonical" href="https://rintuchowdory.github.io/openclow-portfolio/" />': '<link rel="canonical" href="https://rintuchowdory.github.io/openclow-portfolio/signup/" />',
-              '<meta property="og:url" content="https://rintuchowdory.github.io/openclow-portfolio/" />': '<meta property="og:url" content="https://rintuchowdory.github.io/openclow-portfolio/signup/" />',
-              '<meta property="og:title" content="OpenClowAI — Intelligence Redefined" />': '<meta property="og:title" content="Join OpenClowAI — Start Your AI Workspace" />',
-              '<meta property="og:description" content="A modern AI workspace with multi-provider intelligence and one focused workspace." />': '<meta property="og:description" content="Create a demo OpenClowAI workspace and explore a focused AI assistant experience." />',
-              '<meta name="twitter:title" content="OpenClowAI — Intelligence Redefined" />': '<meta name="twitter:title" content="Join OpenClowAI — Start Your AI Workspace" />',
-              '<meta name="twitter:description" content="A modern AI workspace with multi-provider intelligence and one focused workspace." />': '<meta name="twitter:description" content="Create a demo OpenClowAI workspace and explore a focused AI assistant experience." />',
-          }
-          for old, new in replacements.items():
-              html = html.replace(old, new)
           import re
-          signup_schema = '''<script id="page-structured-data" type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Join OpenClowAI","url":"https://rintuchowdory.github.io/openclow-portfolio/signup/","description":"Create a demo OpenClowAI workspace and explore a focused AI assistant experience.","isPartOf":{"@id":"https://rintuchowdory.github.io/openclow-portfolio/#website"}}</script>'''
-          html = re.sub(r'<script id="page-structured-data" type="application/ld\+json">.*?</script>', signup_schema, html, flags=re.DOTALL)
-          signup.write_text(html)
+
+          routes = {
+              "signup": {
+                  "title": "Join OpenClowAI — Start Your AI Workspace",
+                  "description": "Create a demo OpenClowAI workspace and explore a focused AI assistant experience.",
+                  "robots": "noindex,follow",
+                  "schema": '{"@context":"https://schema.org","@type":"WebPage","name":"Join OpenClowAI","url":"https://rintuchowdory.github.io/openclow-portfolio/signup/","description":"Create a demo OpenClowAI workspace and explore a focused AI assistant experience.","isPartOf":{"@id":"https://rintuchowdory.github.io/openclow-portfolio/#website"}}',
+              },
+              "privacy": {
+                  "title": "Privacy Policy — OpenClowAI",
+                  "description": "How OpenClowAI handles privacy, analytics, and external services.",
+                  "robots": "index,follow",
+                  "schema": '{"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy","url":"https://rintuchowdory.github.io/openclow-portfolio/privacy/","description":"How OpenClowAI handles privacy, analytics, and external services."}',
+              },
+              "terms": {
+                  "title": "Terms of Use — OpenClowAI",
+                  "description": "Terms for using the OpenClowAI portfolio and product demonstration.",
+                  "robots": "index,follow",
+                  "schema": '{"@context":"https://schema.org","@type":"WebPage","name":"Terms of Use","url":"https://rintuchowdory.github.io/openclow-portfolio/terms/","description":"Terms for using the OpenClowAI portfolio and product demonstration."}',
+              },
+              "contact": {
+                  "title": "Contact OpenClowAI",
+                  "description": "Send a question or project note to the OpenClowAI portfolio maintainer.",
+                  "robots": "index,follow",
+                  "schema": '{"@context":"https://schema.org","@type":"ContactPage","name":"Contact OpenClowAI","url":"https://rintuchowdory.github.io/openclow-portfolio/contact/"}',
+              },
+          }
+
+          common = {
+              "description": '<meta name="description" content="OpenClowAI is a modern AI workspace with multi-provider intelligence, task management, and secure session-based assistance." />',
+              "canonical": '<link rel="canonical" href="https://rintuchowdory.github.io/openclow-portfolio/" />',
+              "og_url": '<meta property="og:url" content="https://rintuchowdory.github.io/openclow-portfolio/" />',
+              "og_title": '<meta property="og:title" content="OpenClowAI — Intelligence Redefined" />',
+              "og_description": '<meta property="og:description" content="A modern AI workspace with multi-provider intelligence and one focused workspace." />',
+              "twitter_title": '<meta name="twitter:title" content="OpenClowAI — Intelligence Redefined" />',
+              "twitter_description": '<meta name="twitter:description" content="A modern AI workspace with multi-provider intelligence and one focused workspace." />',
+          }
+
+          for route, data in routes.items():
+              page = Path(f"site/{route}/index.html")
+              html = page.read_text()
+              replacements = {
+                  "<title>OpenClowAI Professional Portfolio</title>": f"<title>{data['title']}</title>",
+                  common["description"]: f'<meta name="description" content="{data["description"]}" />',
+                  '<meta name="robots" content="index,follow" />': f'<meta name="robots" content="{data["robots"]}" />',
+                  common["canonical"]: f'<link rel="canonical" href="https://rintuchowdory.github.io/openclow-portfolio/{route}/" />',
+                  common["og_url"]: f'<meta property="og:url" content="https://rintuchowdory.github.io/openclow-portfolio/{route}/" />',
+                  common["og_title"]: f'<meta property="og:title" content="{data["title"]}" />',
+                  common["og_description"]: f'<meta property="og:description" content="{data["description"]}" />',
+                  common["twitter_title"]: f'<meta name="twitter:title" content="{data["title"]}" />',
+                  common["twitter_description"]: f'<meta name="twitter:description" content="{data["description"]}" />',
+              }
+              for old, new in replacements.items():
+                  html = html.replace(old, new)
+              schema = f'<script id="page-structured-data" type="application/ld+json">{data["schema"]}</script>'
+              html = re.sub(r'<script id="page-structured-data" type="application/ld\+json">.*?</script>', schema, html, flags=re.DOTALL)
+              page.write_text(html)
           PY
           touch site/.nojekyll
 

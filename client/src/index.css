@@ -227,6 +227,7 @@
   .digital-visual-frame { border: 1px solid rgb(55 230 255 / 28%); border-radius: 1rem; background: linear-gradient(145deg, rgb(55 230 255 / 10%), rgb(13 20 32 / 78%) 42%, rgb(103 133 255 / 8%)); padding: 0.55rem; box-shadow: 0 0 0 1px rgb(255 255 255 / 2%), 0 28px 90px rgb(0 0 0 / 50%), 0 0 55px rgb(55 230 255 / 10%); }
   .digital-visual-frame img { border-radius: 0.65rem; }
   .digital-feature-card { background: linear-gradient(145deg, rgb(15 26 39 / 90%), rgb(9 15 24 / 90%)); box-shadow: inset 0 1px rgb(255 255 255 / 3%); }
+  .digital-demo-panel { background: linear-gradient(145deg, rgb(15 26 39 / 94%), rgb(9 15 24 / 96%)); box-shadow: inset 0 1px rgb(255 255 255 / 4%), 0 24px 70px rgb(0 0 0 / 20%); }
   .digital-cta { border: 1px solid rgb(55 230 255 / 32%); background: linear-gradient(110deg, rgb(55 230 255 / 10%), rgb(103 133 255 / 8%)); box-shadow: inset 0 1px rgb(255 255 255 / 5%); }
   @media (prefers-reduced-motion: no-preference) {
     .digital-dot { animation: signal-pulse 2.4s ease-in-out infinite; }

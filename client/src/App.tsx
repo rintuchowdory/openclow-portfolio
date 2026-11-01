@@ -6,18 +6,23 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
-
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Contact from "./pages/Contact";
 
 function Router() {
   return (
     <WouterRouter base={import.meta.env.BASE_URL}>
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/signup"} component={SignUp} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/signup"} component={SignUp} />
+        <Route path={"/privacy"} component={Privacy} />
+        <Route path={"/terms"} component={Terms} />
+        <Route path={"/contact"} component={Contact} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
     </WouterRouter>
   );
 }
@@ -30,9 +35,7 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <main id="main-content">

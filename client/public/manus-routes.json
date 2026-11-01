@@ -2,6 +2,8 @@
   "routes": [
     { "path": "/", "title": "OpenClowAI Portfolio" },
     { "path": "/signup", "title": "Join OpenClowAI" },
-    { "path": "/404", "title": "Page Not Found" }
+    { "path": "/privacy", "title": "Privacy Policy" },
+    { "path": "/terms", "title": "Terms of Use" },
+    { "path": "/contact", "title": "Contact OpenClowAI" }
   ]
 }
