@@ -128,6 +128,11 @@
 }
 
 @layer components {
+  .section-lazy {
+    content-visibility: auto;
+    contain-intrinsic-size: 800px;
+  }
+
   /**
    * Custom container utility that centers content and adds responsive padding.
    *

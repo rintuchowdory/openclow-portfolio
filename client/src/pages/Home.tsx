@@ -191,8 +191,10 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-lg blur-3xl" />
               <div className="digital-visual-frame relative z-10 w-full">
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/hero-ai-interface-jkB7v9E3KGxAjU2KKZxvGg.webp"
+                  src={`${import.meta.env.BASE_URL}hero-interface.svg`}
                   alt="OpenClowAI Interface"
+                  width="960"
+                  height="560"
                   fetchPriority="high"
                   decoding="async"
                   className="w-full h-auto"
@@ -207,7 +209,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 md:py-32 border-t border-border/30">
+      <section id="features" className="section-lazy py-20 md:py-32 border-t border-border/30">
         <div className="container">
           <div className="space-y-12">
             <div className="space-y-3 max-w-2xl">
@@ -249,15 +251,17 @@ export default function Home() {
       </section>
 
       {/* Tech Stack Section */}
-      <section id="tech" className="py-20 md:py-32 border-t border-border/30">
+      <section id="tech" className="section-lazy py-20 md:py-32 border-t border-border/30">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Tech Stack Image */}
             <div className="relative h-96 md:h-full flex items-center justify-center order-2 md:order-1">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-lg blur-3xl" />
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/tech-stack-visual-7umteVNXbNSvtB2fSUYDmG.webp"
+                src={`${import.meta.env.BASE_URL}tech-stack-visual.svg`}
                 alt="Tech Stack"
+                width="800"
+                height="520"
                 loading="lazy"
                 decoding="async"
                 className="relative z-10 rounded-lg shadow-2xl w-full h-auto"
@@ -290,7 +294,7 @@ export default function Home() {
       </section>
 
       {/* AI Providers Section */}
-      <section className="py-20 md:py-32 border-t border-border/30">
+      <section className="section-lazy py-20 md:py-32 border-t border-border/30">
         <div className="container">
           <div className="space-y-12">
             <div className="space-y-3 max-w-2xl">
@@ -305,8 +309,10 @@ export default function Home() {
             <div className="relative h-96 flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-lg blur-3xl" />
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663652274342/fVJaxHBXXQreufyoFCqVLm/feature-ai-models-QUmEQGPnDXSEghBakjyqHs.webp"
+                src={`${import.meta.env.BASE_URL}ai-providers-visual.svg`}
                 alt="AI Providers"
+                width="960"
+                height="420"
                 loading="lazy"
                 decoding="async"
                 className="relative z-10 rounded-lg shadow-2xl w-full h-auto max-w-2xl"
@@ -332,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-20 md:py-32 border-t border-border/30">
+      <section id="cta" className="section-lazy py-20 md:py-32 border-t border-border/30">
         <div className="container">
           <div className="digital-cta max-w-3xl mx-auto rounded-2xl p-8 md:p-12 text-center space-y-8">
             <div className="space-y-4">

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">OpenClowAI interface preview</title><desc id="desc">Abstract AI workspace interface in cyan and navy.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0e2030"/><stop offset="1" stop-color="#07111f"/></linearGradient><linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#37e6ff"/><stop offset="1" stop-color="#56f0c4"/></linearGradient></defs>
+  <rect width="960" height="560" rx="22" fill="url(#bg)"/><rect x="28" y="28" width="904" height="504" rx="16" fill="#091522" stroke="#244458"/>
+  <rect x="28" y="28" width="180" height="504" rx="16" fill="#0c1c2c"/><circle cx="62" cy="68" r="10" fill="#37e6ff"/><rect x="84" y="61" width="86" height="14" rx="7" fill="#e8f7ff" opacity=".9"/>
+  <g fill="#8fa7b9"><rect x="52" y="126" width="122" height="10" rx="5"/><rect x="52" y="158" width="96" height="10" rx="5"/><rect x="52" y="190" width="112" height="10" rx="5"/><rect x="52" y="222" width="76" height="10" rx="5"/></g>
+  <rect x="238" y="62" width="652" height="54" rx="12" fill="#102536"/><circle cx="270" cy="89" r="12" fill="#56f0c4" opacity=".9"/><rect x="298" y="82" width="160" height="14" rx="7" fill="#dff8ff" opacity=".9"/>
+  <rect x="238" y="148" width="392" height="144" rx="14" fill="#102536"/><rect x="654" y="148" width="236" height="144" rx="14" fill="#102536"/>
+  <path d="M270 248c50-74 88 28 132-40s74 18 118-35" fill="none" stroke="url(#glow)" stroke-width="6" stroke-linecap="round"/><g fill="#8fa7b9"><rect x="270" y="180" width="106" height="12" rx="6"/><rect x="686" y="180" width="116" height="12" rx="6"/><rect x="686" y="214" width="154" height="10" rx="5"/><rect x="686" y="246" width="112" height="10" rx="5"/></g>
+  <rect x="238" y="324" width="652" height="162" rx="14" fill="#0d1e2d" stroke="#1f3b50"/><rect x="270" y="360" width="472" height="12" rx="6" fill="#8fa7b9" opacity=".7"/><rect x="270" y="392" width="382" height="12" rx="6" fill="#8fa7b9" opacity=".45"/><rect x="270" y="434" width="152" height="24" rx="12" fill="#37e6ff" opacity=".85"/><rect x="438" y="434" width="112" height="24" rx="12" fill="#56f0c4" opacity=".7"/>
+</svg>
