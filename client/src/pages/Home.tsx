@@ -103,7 +103,7 @@ export default function Home() {
   usePageMetadata(HOME_METADATA);
 
   const handleStartFree = () => {
-    window.location.href = `${import.meta.env.BASE_URL}signup`;
+    window.location.assign(`${import.meta.env.BASE_URL}signup/`);
   };
 
   const handleViewGitHub = () => {
